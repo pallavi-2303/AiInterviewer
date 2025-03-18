@@ -20,8 +20,6 @@ import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
 import Resume from "./pages/Resume";
 function App() {
-  
-
   return (
     <>
       <Router>
@@ -49,7 +47,7 @@ function App() {
             }
           >
           {/* add all the protected routes   */}
-          <Route path="/resume" element={<Resume/>}></Route>
+           <Route path="/resume" element={<Resume/>}></Route> 
           <Route path="/generate" element={<GeneratePage />}>
           
           <Route index element={<DashBoard/>}/>
