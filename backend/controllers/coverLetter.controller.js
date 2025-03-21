@@ -36,8 +36,8 @@ export const getCoverLetters = async (req, res) => {
 export const getCoverLetterById = async (req, res) => {
   try {
     const coverLetter = await CoverLetter.findById(req.params.id);
-
-    if (!coverLetter || coverLetter.userId.toString() !== req.user.id) {
+    const userId = req.headers['userid']
+    if (!coverLetter || coverLetter.userId!== userId) {
       return res.status(404).json({ message: 'Cover letter not found' });
     }
     res.json(coverLetter);
@@ -50,7 +50,7 @@ export const getCoverLetterById = async (req, res) => {
 export const updateCoverLetter = async (req, res) => {
   try {
     const coverLetter = await CoverLetter.findById(req.params.id);
-
+    const userId = req.headers['userid'];
     if (!coverLetter || coverLetter.userId.toString() !== req.user.id) {
       return res.status(404).json({ message: 'Cover letter not found' });
     }

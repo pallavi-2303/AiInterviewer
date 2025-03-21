@@ -22,6 +22,7 @@ import Resume from "./pages/Resume";
 import CoverLetter from "./pages/CoverLetter";
 import AiCoverLetterPage from "./pages/AiCoverLetterPage";
 import NewCoverLetterPage from "./pages/NewCoverLetter";
+import EditCoverLetterPage from "./components/ui/EditCoverLetterPage";
 function App() {
   return (
     <>
@@ -53,6 +54,7 @@ function App() {
            <Route path="/resume" element={<Resume/>}></Route> 
            <Route path="/ai-cover-letter" element={<CoverLetter/>}></Route> 
            <Route path="/ai-cover-letter/new" element={<NewCoverLetterPage/>}></Route> 
+           <Route path="/ai-cover-letter/:id" element={<EditCoverLetterPage/>}></Route>
            
           <Route path="/generate" element={<GeneratePage />}>
           

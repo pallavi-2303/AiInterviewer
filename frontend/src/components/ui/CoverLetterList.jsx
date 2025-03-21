@@ -7,9 +7,11 @@ import { Eye, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import axios from 'axios';
 import { useAuth } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
  
 const CoverLetterList = ({initialcoverLetters}) => {
   const {userId}=useAuth();
+  const navigate=useNavigate();
   const [coverLetters,setCoverLetters]=useState(initialcoverLetters);
   useEffect(()=>{
 setCoverLetters(initialcoverLetters);
@@ -61,7 +63,7 @@ if(!coverLetters?.length){
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => router.push(`/ai-cover-letter/${letter.id}`)}
+                  onClick={() => navigate(`/ai-cover-letter/${letter._id}`)}
                 >
                   <Eye className="h-4 w-4" />
                 </Button>
