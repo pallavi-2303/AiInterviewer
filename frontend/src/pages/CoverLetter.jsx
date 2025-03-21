@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button'
 import CoverLetterList from '@/components/ui/CoverLetterList'
+import { useAuth } from '@clerk/clerk-react'
+import axios from 'axios'
 import { Plus } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -7,13 +9,15 @@ import { toast } from 'sonner'
 
 const CoverLetter = () => {
 const [coverLetters,setCoverLetters]=useState();
+const {userId}=useAuth();
 useEffect(()=>{
 const fetchCoverLetter=async()=>{
  try {
-    const response=await axios.get(`http://localhost:8000/coverLetter/get`);
+    const response=await axios.get(`http://localhost:8000/coverLetter/get/${userId}`);
 console.log(response);
 setCoverLetters(response.data);
  } catch (error) {
+console.log(error);
  console.log("Error Fetching cover Letter");
  toast.error("Error Fetching Cover Letter");
  }
@@ -31,7 +35,7 @@ fetchCoverLetter();
     </Link>
   </div>
 
-  <CoverLetterList coverLetters={coverLetters} /></div>
+  <CoverLetterList initialcoverLetters={coverLetters} /></div>
   )
 }
 

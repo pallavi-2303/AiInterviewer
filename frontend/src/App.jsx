@@ -21,6 +21,7 @@ import Services from "./pages/Services";
 import Resume from "./pages/Resume";
 import CoverLetter from "./pages/CoverLetter";
 import AiCoverLetterPage from "./pages/AiCoverLetterPage";
+import NewCoverLetterPage from "./pages/NewCoverLetter";
 function App() {
   return (
     <>
@@ -50,8 +51,8 @@ function App() {
           >
           {/* add all the protected routes   */}
            <Route path="/resume" element={<Resume/>}></Route> 
-           <Route path="/cover-letter" element={<CoverLetter/>}></Route> 
-           <Route path="/ai-cover-letter/new" element={<AiCoverLetterPage/>}></Route> 
+           <Route path="/ai-cover-letter" element={<CoverLetter/>}></Route> 
+           <Route path="/ai-cover-letter/new" element={<NewCoverLetterPage/>}></Route> 
            
           <Route path="/generate" element={<GeneratePage />}>
           

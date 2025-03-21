@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card'
 import { Button } from './button'
+import { format, parse } from "date-fns";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from './alert-dialog'
 import { Eye, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
-const format = (dateString) => {
-  if (dateString) {
-    const date = parse(dateString, "yyyy-MM", new Date());
-    return format(date, "MMM yyyy");
-  }
-};
-const CoverLetterList = ({coverLetters}) => {
+import axios from 'axios';
+import { useAuth } from '@clerk/clerk-react';
+ 
+const CoverLetterList = ({initialcoverLetters}) => {
+  const {userId}=useAuth();
+  const [coverLetters,setCoverLetters]=useState(initialcoverLetters);
+  useEffect(()=>{
+setCoverLetters(initialcoverLetters);
+  },[initialcoverLetters])
 const handleDelete=async(id)=>{
+  console.log(id);
   try {
-   await axios.delete(`http://localhost:8000/coverLetter/${id}`);
+   await axios.delete(`http://localhost:8000/coverLetter/${id}`,{
+    headers:{
+      'userId':userId
+    }
+   });
    toast.success("Cover Letter Deleted Successfully");
+   setCoverLetters(prevCoverLetters=>prevCoverLetters.filter(letter=>letter._id!==id));
   } catch (error) {
+    console.log(error);
    console.log(error.message);
    toast.error("Failed to delete cover Letter");
   }  
@@ -72,7 +82,7 @@ if(!coverLetters?.length){
                     <AlertDialogFooter>
                       <AlertDialogCancel>Cancel</AlertDialogCancel>
                       <AlertDialogAction
-                        onClick={() => handleDelete(letter.id)}
+                        onClick={() => handleDelete(letter._id)}
                         className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                       >
                         Delete

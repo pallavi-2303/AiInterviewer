@@ -3,14 +3,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import useFetch from '@/Hooks/UseFetch'
 import { chatSession } from '@/scripts'
 import { useAuth, useUser } from '@clerk/clerk-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Sparkle, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -19,6 +19,7 @@ import { z } from 'zod'
 const AiCoverLetterPage = () => {
 const {user}=useUser();
 const {userId}=useAuth();
+const navigate=useNavigate();
 console.log(userId);
  const coverLetterSchema = z.object({
         companyName: z.string().min(1, "Company name is required"),
@@ -160,7 +161,7 @@ const onSubmit = async (data) => {
             </div>
 
             <div className="flex justify-end">
-              <Button type="submit" disabled={generating}>
+              <Button type="submit" disabled={generating}> <Sparkles/>
                 {generating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
