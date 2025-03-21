@@ -13,7 +13,8 @@ import MDEditor from "@uiw/react-md-editor";
 import { entriesToMarkdown } from "@/lib/helper2";
 import { toast } from "sonner";
 import axios from "axios";
-import html2pdf from "html2pdf.js";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 const ResumeBuilder = ({ initialcontent }) => {
   const [activeTab, setActiveTab] = useState("edit");
   const [isSaving, setIsSaving] = useState(false);
@@ -63,6 +64,7 @@ const ResumeBuilder = ({ initialcontent }) => {
     register,
     handleSubmit,
     watch,
+    getValues, 
     formState: { errors },
   } = useForm({
     resolver: zodResolver(resumeSchema),
@@ -138,18 +140,50 @@ const ResumeBuilder = ({ initialcontent }) => {
   };
   const [isGenerating, setIsGenerating] = useState(false);
   const generatePDF = async () => {
+    const formData = getValues();  // Ensure this is populated
+    console.log(formData);  // Check if the data is being fetched properly
+  
+    if (!formData) {
+      alert("Form data is empty. Please fill out the form.");
+      return;
+    }
     setIsGenerating(true);
     try {
-      const element = document.getElementById("resume");
-      const opt = {
-        margin: [15, 15],
-        filename: "resume.pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      };
+      const input = document.getElementById("resume");
+console.log(input);
 
-      await html2pdf().set(opt).from(element).save();
+if (!input) {
+  alert("Resume preview not found. Make sure it is rendered before generating PDF.");
+  return;
+}
+      // Set the options for html2canvas to capture the full content
+      const options = {
+        scale: 2, // Increase the scale to improve the quality
+        useCORS: true,
+      };
+  
+      html2canvas(input, options).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 297; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+         // Add the first page
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      // Add more pages if necessary
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      pdf.save("resume.pdf");
+    });
     } catch (error) {
       console.error("PDF generation error:", error);
     } finally {
@@ -193,7 +227,7 @@ const ResumeBuilder = ({ initialcontent }) => {
             )}
           </Button>
           <Button
-            onClick={generatePDF}
+            onClick={handleSubmit(generatePDF)}
             disabled={isGenerating}
           >
             {isGenerating ? (

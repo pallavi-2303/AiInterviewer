@@ -52,6 +52,20 @@ const {user}=useUser();
          Resume Builder
        </NavLink>
       )}
+         {userId && (
+                    <NavLink
+                      to="/cover-letter"
+                      className={({ isActive }) =>
+                        cn(
+                          "text-base text-neutral-500",
+                          isActive && "text-neutral-900 font-semibold"
+                        )
+                      }
+                    >
+                      Cover-Letter Generator
+                    </NavLink>
+                    
+                  )}
       </nav> 
       </SheetHeader>
     </SheetContent>

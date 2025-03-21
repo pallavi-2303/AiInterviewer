@@ -49,6 +49,20 @@ const Header = () => {
               </NavLink>
               
             )}
+               {userId && (
+              <NavLink
+                to="/cover-letter"
+                className={({ isActive }) =>
+                  cn(
+                    "text-base text-neutral-500",
+                    isActive && "text-neutral-900 font-semibold"
+                  )
+                }
+              >
+                Cover-Letter Generator
+              </NavLink>
+              
+            )}
           </nav>
           {/* profilesection */}
           <div className="ml-auto flex items-center gap-6">
