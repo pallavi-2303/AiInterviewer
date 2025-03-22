@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PublicLayout from "./layout/publicLayout";
+import PublicLayout from "@/layout/publicLayout";
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUp";
 import AuthenticationLayout from "./layout/AuthenticationLayout";
