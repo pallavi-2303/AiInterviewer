@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PublicLayout from "@/layout/publicLayout";
+
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUp";
 import AuthenticationLayout from "./layout/AuthenticationLayout";
@@ -23,6 +23,7 @@ import CoverLetter from "./pages/CoverLetter";
 import AiCoverLetterPage from "./pages/AiCoverLetterPage";
 import NewCoverLetterPage from "./pages/NewCoverLetter";
 import EditCoverLetterPage from "./components/ui/EditCoverLetterPage";
+import PublicLayout from "./layout/PublicLayout";
 function App() {
   return (
     <>
