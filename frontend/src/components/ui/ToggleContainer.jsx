@@ -54,7 +54,7 @@ const {user}=useUser();
       )}
          {userId && (
                     <NavLink
-                      to="/cover-letter"
+                      to="/ai-cover-letter"
                       className={({ isActive }) =>
                         cn(
                           "text-base text-neutral-500",

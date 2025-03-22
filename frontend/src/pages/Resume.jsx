@@ -13,7 +13,7 @@ const Resume = () => {
         );
         console.log(response);
         setResume(response.data);
-        console.log(resume);
+        console.log(response);
       } catch (error) {
         console.error("Error fetching resume:", error);
       }

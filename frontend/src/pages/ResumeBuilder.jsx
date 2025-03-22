@@ -455,7 +455,7 @@ if (!input) {
               preview={resumeMode}
             />
           </div>
-          <div >
+          
             <div id="resume">
               <MDEditor.Markdown
                 source={previewContent}
@@ -465,7 +465,7 @@ if (!input) {
                 }}
               />
             </div>
-          </div>
+        
         </TabsContent>
       </Tabs>
     </div>
