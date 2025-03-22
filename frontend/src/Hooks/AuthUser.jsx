@@ -6,7 +6,7 @@ const SaveUser=()=>{
     const {user}=useUser();
     useEffect(()=>{
 if(user){
- axios.post("http://localhost:8000/user/save-user",{
+ axios.post("https://aiinterviewer-87mp.onrender.com/user/save-user",{
     id: user.id,
     firstName: user.firstName,
     lastName: user.lastName,

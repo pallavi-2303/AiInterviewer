@@ -9,7 +9,7 @@ const Resume = () => {
     const fetchResume = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/resume/get/${userId}`
+          `https://aiinterviewer-87mp.onrender.com/resume/get/${userId}`
         );
         console.log(response);
         setResume(response.data);

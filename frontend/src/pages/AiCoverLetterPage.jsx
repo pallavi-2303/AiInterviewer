@@ -87,7 +87,7 @@ const onSubmit = async (data) => {
     try {
    const content=   await generateCoverLetter(data);
    // Step 2: Save the cover letter to the database
-   const saveResponse = await axios.post('http://localhost:8000/coverLetter/create', {
+   const saveResponse = await axios.post('https://aiinterviewer-87mp.onrender.com/coverLetter/create', {
     userId: userId, // Replace with the actual user ID from your auth system
     content,
     jobTitle: data?.jobTitle,

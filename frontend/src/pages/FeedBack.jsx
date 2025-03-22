@@ -31,7 +31,7 @@ const navigate=useNavigate();
       if (interviewId) {
         try {
           const response = await axios.get(
-            `http://localhost:8000/interview/interviewById/${interviewId}`
+            `https://aiinterviewer-87mp.onrender.com/interview/interviewById/${interviewId}`
           );
     
 
@@ -44,7 +44,7 @@ const navigate=useNavigate();
 const fetchFeedbacks=async()=>{
 setLoading(true);
 try {
-const response=await axios.get(`http://localhost:8000/userAnswer/feedbacks/${userId}/${interviewId}`) ;
+const response=await axios.get(`https://aiinterviewer-87mp.onrender.com/userAnswer/feedbacks/${userId}/${interviewId}`) ;
 console.log(response.data);
 setFeedBacks(response.data)  ; 
 } catch (error) {

@@ -16,7 +16,7 @@ const DashBoard = () => {
   const {userId}=useAuth();
   useEffect(()=>{
 setLoading(true);
-axios.get(`http://localhost:8000/interview/${userId}`)
+axios.get(`https://aiinterviewer-87mp.onrender.com/interview/${userId}`)
 .then((response)=>{
   console.log(response);
   setInterview(response.data.interviews);

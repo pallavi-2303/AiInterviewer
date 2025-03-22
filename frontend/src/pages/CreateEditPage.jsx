@@ -10,7 +10,7 @@ useEffect(()=>{
 const fetchInterviewById=async()=>{
   if(interviewId){
     try {
-const response=await axios.get(`http://localhost:8000/interview/interviewById/${interviewId}`)
+const response=await axios.get(`https://aiinterviewer-87mp.onrender.com/interview/interviewById/${interviewId}`)
 console.log(response);
 setInterview(response.data.interview)  
   

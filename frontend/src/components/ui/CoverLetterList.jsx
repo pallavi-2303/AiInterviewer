@@ -19,7 +19,7 @@ setCoverLetters(initialcoverLetters);
 const handleDelete=async(id)=>{
   console.log(id);
   try {
-   await axios.delete(`http://localhost:8000/coverLetter/${id}`,{
+   await axios.delete(`https://aiinterviewer-87mp.onrender.com/coverLetter/${id}`,{
     headers:{
       'userId':userId
     }

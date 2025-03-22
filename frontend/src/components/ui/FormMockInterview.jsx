@@ -105,7 +105,7 @@ let response;
       if (initialData) {
       if(isValid){
 const aiResult=await generateAiResponse(data);
-response=await axios.put(`http://localhost:8000/interview/${initialData._id}`,{
+response=await axios.put(`https://aiinterviewer-87mp.onrender.com/interview/${initialData._id}`,{
   questions:aiResult,
   ...data,
   updatedAt:new Date(),
@@ -118,7 +118,7 @@ toast.success("Interview Updated Successfully")
         if(isValid){
         //create a new mock interview
       const aiResult=await generateAiResponse(data)
-       response= await axios.post("http://localhost:8000/interview/create", {
+       response= await axios.post("https://aiinterviewer-87mp.onrender.com/interview/create", {
         ...data,
         userId,
         questions:aiResult,

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(urlencoded({extended:true}));
 const corsOptions={
-origin:'http://localhost:5174',
+origin:'https://aiinterviewer-87mp.onrender.com',
 credentials:true  
 }
 app.use(cors(corsOptions));

@@ -13,7 +13,7 @@ const [coverLetter,setCoverLetter]=useState(null);
 useEffect(()=>{
 const getCoverLetterById=async()=>{
 try {
- const response=await axios.get(`http://localhost:8000/coverLetter/${id}`,{
+ const response=await axios.get(`https://aiinterviewer-87mp.onrender.com/coverLetter/${id}`,{
     headers:{
     'userId':userId
     }

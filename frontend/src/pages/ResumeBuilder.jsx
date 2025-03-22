@@ -100,7 +100,7 @@ const ResumeBuilder = ({ initialcontent }) => {
     setIsSaving(true); // Start saving process
     console.log("content",content);
    try {
-  const response=await axios.post(`http://localhost:8000/resume/save/${user.id}`,{
+  const response=await axios.post(`https://aiinterviewer-87mp.onrender.com/resume/save/${user.id}`,{
     content });
     console.log(response);
     toast.success("Resume saved successfully"); 
