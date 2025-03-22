@@ -98,6 +98,7 @@ const ResumeBuilder = ({ initialcontent }) => {
   }, [formValues, activeTab]);
   const saveResume = async (content) => {
     setIsSaving(true); // Start saving process
+    console.log("content",content);
    try {
   const response=await axios.post(`http://localhost:8000/resume/save/${user.id}`,{
     content });
@@ -197,7 +198,7 @@ if (!input) {
         .replace(/\n/g, "\n") // Normalize newlines
         .replace(/\n\s*\n/g, "\n\n") // Normalize multiple newlines to double newlines
         .trim();
-      console.log(previewContent, formattedContent);
+      console.log( formattedContent);
       await saveResume(formattedContent);
     } catch (error) {
       console.log("Error saving resume:", error);
@@ -298,12 +299,12 @@ if (!input) {
                   )}
                 </div>
                 <div className="space-y-4">
-                  <label className="text-sm font-medium">LinkedIn</label>
+                  <label className="text-sm font-medium">Twitter</label>
                   <Input
                     type="url"
                     {...register("contactInfo.twitter")}
                     placeholder="https://twitter.com/yourhandle"
-                    error={errors?.contactInfo?.linkedIn}
+                    error={errors?.contactInfo?.twitter}
                   />
                   {errors?.contactInfo?.twitter && (
                     <p className="text-red-500 text-sm">
@@ -345,7 +346,7 @@ if (!input) {
                   <Textarea
                     {...field}
                     className="h-32"
-                    placeholder="List yyour Key Skills"
+                    placeholder="List your Key Skills"
                     error={errors?.skills}
                   />
                 )}
