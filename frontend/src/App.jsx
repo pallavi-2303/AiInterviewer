@@ -1,29 +1,27 @@
 import { useState } from "react";
-import { Button } from "./components/ui/button";
+import { Button } from "@/components/ui/button";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUp";
-import AuthenticationLayout from "./layout/AuthenticationLayout";
-import SignInPage from "./pages/SignIn";
+import HomePage from "@/pages/HomePage";
+import SignUpPage from "@/pages/SignUp";
+import AuthenticationLayout from "@/layout/AuthenticationLayout";
+import SignInPage from "@/pages/SignIn";
 import MainLayout from "@/layout/MainLayout";
-import ProtectedRoute from "./layout/ProtectedLayout";
-import GeneratePage from "./pages/GeneratePage";
-import DashBoard from "./components/ui/DashBoard";
-import CreateEditPage from "./pages/CreateEditPage";
-import SaveUser from "./Hooks/AuthUser";
-import MoackLoadPage from "./pages/MoackLoadPage";
-import MockInterviewPage from "./pages/MockInterviewPage";
-import FeedBack from "./pages/FeedBack";
-import ContactUs from "./pages/ContactUs";
-import AboutUs from "./pages/AboutUs";
-import Services from "./pages/Services";
-import Resume from "./pages/Resume";
-import CoverLetter from "./pages/CoverLetter";
-import AiCoverLetterPage from "./pages/AiCoverLetterPage";
-import NewCoverLetterPage from "./pages/NewCoverLetter";
-import EditCoverLetterPage from "./components/ui/EditCoverLetterPage";
-import PublicLayout from "./layout/PublicLayout";
+import ProtectedRoute from "@/layout/ProtectedLayout";
+import GeneratePage from "@/pages/GeneratePage";
+import DashBoard from "@/components/ui/DashBoard";
+import CreateEditPage from "@/pages/CreateEditPage";
+import MoackLoadPage from "@/pages/MoackLoadPage";
+import MockInterviewPage from "@/pages/MockInterviewPage";
+import FeedBack from "@/pages/FeedBack";
+import ContactUs from "@/pages/ContactUs";
+import AboutUs from "@/pages/AboutUs";
+import Services from "@/pages/Services";
+import Resume from "@/pages/Resume";
+import CoverLetter from "@/pages/CoverLetter";
+import NewCoverLetterPage from "@/pages/NewCoverLetter";
+import EditCoverLetterPage from "@/components/ui/EditCoverLetterPage";
+import PublicLayout from "@/layout/PublicLayout";
 function App() {
   return (
     <>
