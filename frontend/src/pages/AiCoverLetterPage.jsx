@@ -97,7 +97,7 @@ const onSubmit = async (data) => {
   });
   if (saveResponse.status === 201) {
     toast.success('Cover Letter Saved Successfully!');
-    navigate('/cover-letter');  // Redirect to cover letter list page
+    navigate('/ai-cover-letter');  // Redirect to cover letter list page
   }
     } catch (error) {
     console.log(error);
